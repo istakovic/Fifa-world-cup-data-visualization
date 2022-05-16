@@ -1,0 +1,42 @@
+[
+  {
+    "YEAR": 2002,
+    "CHAMPION": "Brazil",
+    "RUNNER UP": "Germany",
+    "THIRD PLACE": "Turkey",
+    "GOALS SCORED": 161,
+    "AVG GOALS PER GAME": 2.5
+  },
+  {
+    "YEAR": 2006,
+    "CHAMPION": "Italy",
+    "RUNNER UP": "France",
+    "THIRD PLACE": "Germany",
+    "GOALS SCORED": 147,
+    "AVG GOALS PER GAME": 2.3
+  },
+  {
+    "YEAR": 2010,
+    "CHAMPION": "Spain",
+    "RUNNER UP": "Netherlands",
+    "THIRD PLACE": "Germany",
+    "GOALS SCORED": 145,
+    "AVG GOALS PER GAME": 2.3
+  },
+  {
+    "YEAR": 2014,
+    "CHAMPION": "Germany",
+    "RUNNER UP": "Argentina",
+    "THIRD PLACE": "Netherlands",
+    "GOALS SCORED": 171,
+    "AVG GOALS PER GAME": 2.7
+  },
+  {
+    "YEAR": 2018,
+    "CHAMPION": "France",
+    "RUNNER UP": "Croatia",
+    "THIRD PLACE": "Belgium",
+    "GOALS SCORED": 169,
+    "AVG GOALS PER GAME": 2.6
+  }
+]

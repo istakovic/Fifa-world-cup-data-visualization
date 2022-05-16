@@ -1,0 +1,34 @@
+.navbar-brand {
+  color: rgb(0, 0, 0);
+  font-size: 30px !important;
+  margin: 0px;
+}
+
+.card {
+  margin: 0 auto;
+  /* Added */
+  float: none;
+  /* Added */
+  margin-bottom: 10px;
+  /* Added */
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: rgb(0, 3, 5);
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: rgb(179, 0, 0);
+  stroke-width: 1.5px;
+}
