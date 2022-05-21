@@ -8,63 +8,63 @@ function generatePie() {
                     {
                         "name": "Placements for 2002",
                         "children": [
-                            { "name": "CHAMPION - Brazil"},
-                            { "name": "RUNNER UP - Germany "},
-                            { "name": "THIRD PLACE - Turkey"},
-                            { "name": "Goals scored total on competition - 161"},
-                            { "name": "AVG GOALS PER GAME - 2.5"}
+                            { "name": "1. BRAZIL" },
+                            { "name": "2. GERMANY " },
+                            { "name": "3. TURKEY" },
+                            { "name": "GOALS SCORED TOTAL ON COMPETITION - 161" },
+                            { "name": "AVG GOALS PER GAME - 2.5" }
                         ]
                     },
                     {
                         "name": "Placements for 2006",
                         "children": [
-                            { "name": "CHAMPION - Italy"},
-                            { "name": "RUNNER UP - France "},
-                            { "name": "THIRD PLACE - Germany"},
-                            { "name": "Goals scored total on competition - 147"},
-                            { "name": "AVG GOALS PER GAME - 2.3"}
+                            { "name": "1. ITALY" },
+                            { "name": "2. FRANCE " },
+                            { "name": "3. GERMANY" },
+                            { "name": "GOALS SCORED TOTAL ON COMPETITION - 147" },
+                            { "name": "AVG GOALS PER GAME - 2.3" }
                         ]
                     },
                     {
                         "name": "Placements for 2010",
                         "children": [
-                            { "name": "CHAMPION - Spain"},
-                            { "name": "RUNNER UP - Netherlands "},
-                            { "name": "THIRD PLACE - Germany"},
-                            { "name": "Goals scored total on competition - 145"},
-                            { "name": "AVG GOALS PER GAME - 2.3"}
+                            { "name": "1. SPAIN" },
+                            { "name": "2. NETHERLANDS" },
+                            { "name": "3. GERMANY" },
+                            { "name": "GOALS SCORED TOTAL ON COMPETITION - 145" },
+                            { "name": "AVG GOALS PER GAME - 2.3" }
                         ]
                     },
                     {
                         "name": "Placements for 2014",
                         "children": [
-                            { "name": "CHAMPION - Germany"},
-                            { "name": "RUNNER UP - Argentina "},
-                            { "name": "THIRD PLACE - Netherlands"},
-                            { "name": "Goals scored total on competition - 171"},
-                            { "name": "AVG GOALS PER GAME - 2.7"}
+                            { "name": "1. GERMANY" },
+                            { "name": "2. ARGENTINA " },
+                            { "name": "3. NETHERLANDS" },
+                            { "name": "GOALS SCORED TOTAL ON COMPETITION - 171" },
+                            { "name": "AVG GOALS PER GAME - 2.7" }
                         ]
                     },
                     {
                         "name": "Placements for 2018",
                         "children": [
-                            { "name": "CHAMPION - France"},
-                            { "name": "RUNNER UP - Croatia"},
-                            { "name": "THIRD PLACE - Belgium"},
-                            { "name": "Goals scored total on competition - 169"},
-                            { "name": "AVG GOALS PER GAME - 2.6"}
+                            { "name": "1. FRANCE" },
+                            { "name": "2. CROATIA" },
+                            { "name": "3. BELGIUM" },
+                            { "name": "Goals scored total on competition - 169" },
+                            { "name": "AVG GOALS PER GAME - 2.6" }
                         ]
                     }
                 ]
             }
         ]
-        
+
     }];
 
     var margin = { top: 0, right: 200, bottom: 20, left: 500 };
     var width = 750, height = 750;
 
-    var i = 0, duration = 800;
+    var i = 0, duration = 500;
 
     var tree = d3.layout.tree()
         .size([height, width]);
@@ -187,5 +187,126 @@ function generatePie() {
         }
         update(d)
     }
-
 }
+
+function donut(){  
+    // Default settings
+    var $el = d3.select("body")
+    //var data = {};
+    // var showTitle = true;
+    var width = 1600,
+        height = 800,
+        radius = Math.min(width, height) / 2;
+  
+    var currentVal;
+    var color = d3.scale.category20();
+    var pie = d3.layout.pie()
+      .sort(null)
+      .value(function(d) { return d.value; });
+  
+    var svg, g, arc; 
+  
+  
+    var object = {};
+  
+    // Method for render/refresh graph
+    object.render = function(){
+      if(!svg){
+        arc = d3.svg.arc()
+        .outerRadius(radius)
+        .innerRadius(radius - (radius/2.5));
+  
+        svg = $el.append("svg")
+          .attr("width", width)
+          .attr("height", height)
+        .append("g")
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+  
+        g = svg.selectAll(".arc")
+          .data(pie(d3.entries(data)))
+        .enter().append("g")
+        .attr("class", "arc");
+  
+        g.append("path")
+          // Attach current value to g so that we can use it for animation
+          .each(function(d) { this._current = d; })
+          .attr("d", arc)
+          .style("fill", function(d) { return color(d.data.key); });
+        g.append("text")
+            .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+            .attr("dy", ".35em")
+            .style("text-anchor", "middle");
+        g.select("text").text(function(d) { return d.data.key; });
+  
+        svg.append("text")
+            .datum(data)
+            .attr("x", 0 )
+            .attr("y", 0 + radius/10 )
+            .attr("class", "text-tooltip")        
+            .style("text-anchor", "middle")
+            .attr("font-weight", "bold")
+            .style("font-size", radius/2.5+"px");
+  
+        g.on("mouseover", function(obj){
+          console.log(obj)
+          svg.select("text.text-tooltip")
+          .attr("fill", function(d) { return color(obj.data.key); })
+          .text(function(d){
+            return d[obj.data.key];
+          });
+        });
+  
+        g.on("mouseout", function(obj){
+          svg.select("text.text-tooltip").text("");
+        });
+  
+      }else{
+        g.data(pie(d3.entries(data))).exit().remove();
+  
+        g.select("path")
+        .transition().duration(200)
+        .attrTween("d", function(a){
+          var i = d3.interpolate(this._current, a);
+          this._current = i(0);
+          return function(t) {
+              return arc(i(t));
+          };
+        })
+  
+        g.select("text")
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; });
+  
+        svg.select("text.text-tooltip").datum(data);
+      }      
+      return object;
+    };
+  
+    // Getter and setter methods
+    object.data = function(value){
+      if (!arguments.length) return data;
+      data = value;
+      return object;
+    };
+  
+    object.$el = function(value){
+      if (!arguments.length) return $el;
+      $el = value;
+      return object;
+    };
+  
+    object.width = function(value){
+      if (!arguments.length) return width;
+      width = value;
+      radius = Math.min(width, height) / 2;
+      return object;
+    };
+  
+    object.height = function(value){
+      if (!arguments.length) return height;
+      height = value;
+      radius = Math.min(width, height) / 2;
+      return object;
+    };
+  
+    return object;
+  };

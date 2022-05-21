@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  body {
+    font: 10px sans-serif;
+  }
+</style>
+
+<body>
+
+  <div class="row mt-2">
+    <div class="col-xs-6">
+      <a href="index.html" class="btn btn-primary active float-left ms-2" role="button" aria-pressed="true">Back to
+        main page</a>
+      <a href="fifa_2014.html" class="btn btn-primary active float-left ms-2" role="button" aria-pressed="true">Back to
+        Fifa 2014 stats</a>
+    </div>
+    <div id="chart1"></div>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script>
+
+      var getData = function () {
+        var size = 0;
+        var data = {
+          "Germany lost 0 and won:": "6",
+          "Argentina won:": "6", "Argentina lost:": "1",
+          "Netherlands won:": "5", "Netherlands lost:": "1",
+          "Brazil won:": "3", "Brazil lost:": "2",
+          "Columbia won:": "4", "Columbia lost:": "1",
+          "Belgium won:": "4", "Belgium lost:": "1"
+        };
+        var text = "1";
+        d3.select("#data").html(text);
+        return data;
+      };
+
+      var chart1 = donut()
+        .$el(d3.select("#chart1"))
+        .data(getData())
+        .render();
+    </script>
+
+</body>
+
+</html>
