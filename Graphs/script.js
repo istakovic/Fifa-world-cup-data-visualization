@@ -194,8 +194,8 @@ function donut(){
     var $el = d3.select("body")
     //var data = {};
     // var showTitle = true;
-    var width = 1600,
-        height = 800,
+    var width = 1810,
+        height = 770,
         radius = Math.min(width, height) / 2;
   
     var currentVal;
