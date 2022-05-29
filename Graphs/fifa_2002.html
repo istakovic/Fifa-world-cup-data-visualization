@@ -75,7 +75,7 @@
         bar_width = max_bar_width;
       }
 
-      const spacing = 0.15 * bar_width;
+      const spacing = 0.25 * bar_width;
       let left_offset = Math.round((svg_width - bar_width * data.length) / 2);
       if (left_offset < 0) {
         left_offset = 0;
@@ -111,7 +111,7 @@
         .on("mouseover", function (d, i) {
           tooltip.html(`Points: ${d}`).style("visibility", "visible");
           d3.select(this)
-            .attr("fill", shadeColor(bar_color, -15));
+            .attr("fill", shadeColor(bar_color, -5));
         })
         .on("mousemove", function () {
           tooltip
@@ -132,7 +132,7 @@
         .attr("fill", "#000000")
         .attr("x", (d, i) => left_offset + bar_width * i + bar_width / 2 - spacing / 2)
         .attr("y", svg_height - bottom_offset + 5)
-        .attr("style", "font-family:Verdana")
+        .attr("style", "font-family:Poppins")
         .text((d, i) => labels[i]);
 
       svg.append("line")

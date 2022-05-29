@@ -25,7 +25,7 @@
   
     <div class="row">
       <div class="col-xs-6">
-          <a href="index.html" class="btn btn-primary active float-left" role="button" aria-pressed="true">Back to
+          <a href="index.html" class="btn btn-primary active float-left ms-2" role="button" aria-pressed="true">Back to
               main page</a>
               <a href="donut_2014.html" class="btn btn-primary active float-left ms-2" role="button" aria-pressed="true">More details</a>
     </div>
@@ -35,7 +35,7 @@
       const data = [19,16,17,11,12,12,10,9,7,7,6,6,5,4,4,4,4,4,3,3,3,3,3,2,1,1,1];
       const labels = ['Germany',
 'Argentina',
-'Nether',
+'Netherland',
 'Brazil',
 'Colombia',
 'Belgium',
@@ -101,7 +101,7 @@
         bar_width = max_bar_width;
       }
   
-      const spacing = 0.2 * bar_width;
+      const spacing = 0.25 * bar_width;
       let left_offset = Math.round((svg_width - bar_width * data.length) / 2);
       if (left_offset < 0) {
         left_offset = 0;
@@ -158,7 +158,7 @@
         .attr("fill", "#000000")
         .attr("x", (d, i) => left_offset + bar_width * i + bar_width / 2 - spacing / 2)
         .attr("y", svg_height - bottom_offset + 5)
-        .attr("style", "font-family:Verdana")
+        .attr("style", "font-family:Poppins")
         .text((d, i) => labels[i]);
   
       svg.append("line")
