@@ -18,7 +18,7 @@ function generatePie() {
                     {
                         "name": "Placements for 2006",
                         "children": [
-                            { "name": "1. ITALY" },
+                            { "name": "1. ITALY"},
                             { "name": "2. FRANCE " },
                             { "name": "3. GERMANY" },
                             { "name": "GOALS SCORED TOTAL ON COMPETITION - 147" },
@@ -190,26 +190,19 @@ function generatePie() {
 }
 
 function donut(){  
-    // Default settings
     var $el = d3.select("body")
-    //var data = {};
-    // var showTitle = true;
     var width = 1810,
         height = 770,
         radius = Math.min(width, height) / 2;
-  
-    var currentVal;
+
     var color = d3.scale.category20();
     var pie = d3.layout.pie()
       .sort(null)
       .value(function(d) { return d.value; });
   
     var svg, g, arc; 
-  
-  
     var object = {};
-  
-    // Method for render/refresh graph
+
     object.render = function(){
       if(!svg){
         arc = d3.svg.arc()

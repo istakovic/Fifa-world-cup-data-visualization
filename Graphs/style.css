@@ -73,3 +73,9 @@ path {
   font-size: 0.8em;
   font-style: italic;
 }
+
+text {
+  font-size: 14px;
+  pointer-events: none;
+  font-family: 'Poppins', serif;
+}
