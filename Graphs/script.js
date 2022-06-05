@@ -51,7 +51,7 @@ function generatePie() {
                             { "name": "1. FRANCE" },
                             { "name": "2. CROATIA" },
                             { "name": "3. BELGIUM" },
-                            { "name": "Goals scored total on competition - 169" },
+                            { "name": "GOALS SCORED TOTAL ON COMPETITION - 169" },
                             { "name": "AVG GOALS PER GAME - 2.6" }
                         ]
                     }
@@ -60,7 +60,7 @@ function generatePie() {
         ]
 
     }];
-
+// literatura - https://bl.ocks.org/d3noob/8375092
     var margin = { top: 0, right: 200, bottom: 20, left: 500 };
     var width = 750, height = 750;
 
@@ -189,6 +189,7 @@ function generatePie() {
     }
 }
 
+// literatura - https://gist.github.com/nnattawat/9368297
 function donut(){  
     var $el = d3.select("body")
     var width = 1810,
@@ -274,7 +275,6 @@ function donut(){
       return object;
     };
   
-    // Getter and setter methods
     object.data = function(value){
       if (!arguments.length) return data;
       data = value;
